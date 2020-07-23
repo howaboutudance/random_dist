@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name = "random_dist",
-    version = "0.5.1",
+    version = "0.5.3",
     author="Hematite Technology",
     author_email="mike@hematite.tech",
     long_description="hello",

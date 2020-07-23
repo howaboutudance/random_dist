@@ -5,11 +5,11 @@ from . import generate
 from . import client
 
 LOCAL_IP = gethostbyname(gethostname())
-def start(runs=300, sleep_length=1, debug=False):
+def start(runs=20, sleep_length=1, debug=False):
     if debug:
         rt = []
     while runs > 0:
-        json_req =  generate.generate_json(ip=LOCAL_IP)
+        json_req =  generate.generate_json(ip=LOCAL_IP, iteration=runs)
         logging.debug(json_req)
         resp = client.send_val(json_req)
         logging.debug(f"sleep for {sleep_length}")

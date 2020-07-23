@@ -1,16 +1,15 @@
 FROM python:3.9-rc as builder
 
 WORKDIR /build
-COPY Pipfile ./
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv:$PATH"
 
 
-COPY ./random_dist/. ./random_dist/
-COPY ./setup.py ./
 COPY ./requirements.txt ./
-
 RUN pip install --install-option="--prefix=/opt/venv" -r requirements.txt
+
+COPY ./setup.py ./
+COPY ./random_dist/. ./random_dist/
 RUN pip install --install-option="--prefix=/opt/venv" .
 
 
@@ -22,6 +21,7 @@ COPY --from=builder /opt/venv /opt/venv
 
 ENV PATH="/opt/venv/bin:$PATH"
 ENV VIRTUAL_ENV="/opt/venv"
+ENV CLIENT_URL="https://postman-echo.com/post"
 RUN pip install -r requirements.txt
 
 EXPOSE 8080

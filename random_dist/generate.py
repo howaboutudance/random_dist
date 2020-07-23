@@ -2,7 +2,7 @@ from random import randint
 import json
 import datetime
 from dateutil.tz import tzlocal
-DATE_FORMAT = "%d %b %Y %H:%M %z"
+DATE_FORMAT = "%d %b %Y %H:%M:%S %f %z"
 
 def generate_val(limit=300, **kwargs):
   return {"value": randint(0, limit), 
